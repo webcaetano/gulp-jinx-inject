@@ -1,6 +1,6 @@
 {
   "name": "gulp-jinx-inject",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is an GulpJS plugin for inject [Jinx](https://github.com/webcaetano/jinx) .AS packages files",
   "license": "MIT",
   "repository": "webcaetano/gulp-jinx-inject",
