@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/webcaetano/gulp-jinx-inject.svg?branch=master)](https://travis-ci.org/webcaetano/gulp-jinx-inject) [![npm version](https://badge.fury.io/js/gulp-jinx-inject.svg)](http://badge.fury.io/js/gulp-jinx-inject)
+
 # [![Imgur](http://i.imgur.com/FHjshUv.png)](https://github.com/webcaetano/jinx)
 
 ### Gulp Jinx Inject
