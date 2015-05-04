@@ -13,7 +13,6 @@ npm install gulp-jinx-inject
 ### Usage 
 
 ```javascript
-
 var jinxInject = require('gulp-jinx-inject');
 var tmpMainFile = '.tmp/as/app/flash/main.as';
 var pkgs = require('jinx-loader')(tmpMainFile);
@@ -21,7 +20,10 @@ var pkgs = require('jinx-loader')(tmpMainFile);
 return gulp.src(tmpMainFile) // file path to inject
 	.pipe(jinxInject(pkgs.as))
 	.pipe(gulp.dest(path.dirname(tmpMainFile))); // injected file
+```
 
+### Result example
+```javascript
 // before 
 
 package {
