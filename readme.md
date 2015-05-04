@@ -1,43 +1,58 @@
-# gulp-jinx-inject [![Build Status](https://travis-ci.org/webcaetano/gulp-jinx-inject.svg?branch=master)](https://travis-ci.org/webcaetano/gulp-jinx-inject)
+# [![Imgur](http://i.imgur.com/FHjshUv.png)](https://github.com/webcaetano/jinx)
 
-> My incredible gulp plugin
+### Gulp Jinx Inject
 
+This is an GulpJS plugin for inject [Jinx](https://github.com/webcaetano/jinx) .AS packages files
 
-## Install
+### Installation
 
 ```
-$ npm install --save-dev gulp-jinx-inject
+npm install gulp-jinx-inject
 ```
 
+### Usage 
 
-## Usage
+```javascript
 
-```js
-var gulp = require('gulp');
 var jinxInject = require('gulp-jinx-inject');
+var tmpMainFile = '.tmp/as/app/flash/main.as';
+var pkgs = require('jinx-loader')(tmpMainFile);
 
-gulp.task('default', function () {
-	return gulp.src('src/file.ext')
-		.pipe(jinxInject())
-		.pipe(gulp.dest('dist'));
-});
+return gulp.src(tmpMainFile) // file path to inject
+	.pipe(jinxInject(pkgs.as))
+	.pipe(gulp.dest(path.dirname(tmpMainFile))); // injected file
+
+// before 
+
+package {
+
+import flash.display.*;
+
+public class main extends Sprite {
+public function main() {
+
+	// [[inject:jinx]]
+
+	include 'partials/bar.as';
+}}}
+
+// after
+
+package {
+
+import flash.display.*;
+
+public class main extends Sprite {
+public function main() {
+
+	include '../../../node_modules/jinx-mempanel/index.as';
+ 	include '../../../node_modules/jinx.as/jinx.as';
+
+	include 'partials/bar.as';
+}}}
 ```
 
 
-## API
+---------------------------------
 
-### jinxInject(options)
-
-#### options
-
-##### foo
-
-Type: `boolean`  
-Default: `false`
-
-Lorem ipsum.
-
-
-## License
-
-MIT © [](https://github.com/webcaetano)
+The MIT [License](https://raw.githubusercontent.com/webcaetano/gulp-jinx-inject/master/LICENSE.md)

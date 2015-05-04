@@ -1,31 +1,28 @@
 'use strict';
-var gutil = require('gulp-util');
 var through = require('through2');
-var someModule = require('some-module');
+var path = require('path');
+var gutil = require('gulp-util');
 
-module.exports = function (options) {
-	if (!options.foo) {
-		throw new gutil.PluginError('gulp-jinx-inject', '`foo` required');
+var utils = {
+	extend:function(destObj) {
+		for (var i = 1; i < arguments.length; i++) for (var key in arguments[i]) destObj[key] = arguments[i][key];
+		return destObj;
 	}
+};
 
-	return through.obj(function (file, enc, cb) {
-		if (file.isNull()) {
-			cb(null, file);
-			return;
+module.exports = function (asFiles) {
+	if (!asFiles) throw new gutil.PluginError('gulp-jinx-inject', '`asFiles` required');
+
+	return through.obj(function (file, enc, callback) {
+		if (file.isNull()) return callback(null, file);
+		if (file.isStream()) return callback(new gutil.PluginError('gulp-jinx-inject', 'Streaming not supported'));
+
+		var fileContent = String(file.contents);
+		if(fileContent.indexOf('// [[inject:jinx]]')!=-1 && asFiles.length){
+			fileContent = fileContent.replace('// [[inject:jinx]]',"include '"+asFiles.join("';\n include '")+"';\n");
 		}
 
-		if (file.isStream()) {
-			cb(new gutil.PluginError('gulp-jinx-inject', 'Streaming not supported'));
-			return;
-		}
-
-		try {
-			file.contents = new Buffer(someModule(file.contents.toString(), options));
-			this.push(file);
-		} catch (err) {
-			this.emit('error', new gutil.PluginError('gulp-jinx-inject', err));
-		}
-
-		cb();
+		file.contents = new Buffer(fileContent);
+		callback(null,file);
 	});
 };

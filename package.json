@@ -1,7 +1,7 @@
 {
   "name": "gulp-jinx-inject",
-  "version": "0.0.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "This is an GulpJS plugin for inject [Jinx](https://github.com/webcaetano/jinx) .AS packages files",
   "license": "MIT",
   "repository": "webcaetano/gulp-jinx-inject",
   "author": {
@@ -13,22 +13,31 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test.js"
   },
   "files": [
     "index.js"
   ],
   "keywords": [
-    "gulpplugin"
+    "gulpplugin",
+    "jinx",
+    "jinxplugin",
+    "as3",
+    "flash",
+    "swf",
+    "swc",
+    "flex"
   ],
   "dependencies": {
-    "gulp-flash": "^1.0.5",
-    "gulp-util": "^3.0.1",
+    "gulp-util": "^3.0.4",
     "through2": "^0.6.3"
   },
   "devDependencies": {
     "chai": "^2.3.0",
+    "gulp": "^3.8.11",
+    "jinx-loader": "^1.0.2",
     "jinx-mempanel": "^1.0.2",
+    "jinx.as": "^0.1.2",
     "mocha": "*"
   }
 }
