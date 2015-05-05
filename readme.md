@@ -2,6 +2,10 @@
 
 # [![Imgur](http://i.imgur.com/FHjshUv.png)](https://github.com/webcaetano/jinx)
 
+# DEPRECATED 
+
+Jinx now have a [compiler](https://github.com/webcaetano/jinx-compiler), and module exports
+
 ### Gulp Jinx Inject
 
 This is an GulpJS plugin for inject [Jinx](https://github.com/webcaetano/jinx) .AS packages files
