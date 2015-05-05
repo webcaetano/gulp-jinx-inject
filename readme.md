@@ -2,7 +2,7 @@
 
 # [![Imgur](http://i.imgur.com/FHjshUv.png)](https://github.com/webcaetano/jinx)
 
-# DEPRECATED 
+#### DEPRECATED 
 
 Jinx now have a [compiler](https://github.com/webcaetano/jinx-compiler), and module exports
 
